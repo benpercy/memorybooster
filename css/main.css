@@ -1,0 +1,72 @@
+body{
+  background: rgba(179,220,237,1);
+  background: -moz-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(179,220,237,0.96) 20%, rgba(110,217,250,0.9) 50%, rgba(188,224,238,0.83) 80%, rgba(188,224,238,0.79) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(179,220,237,1)), color-stop(20%, rgba(179,220,237,0.96)), color-stop(50%, rgba(110,217,250,0.9)), color-stop(80%, rgba(188,224,238,0.83)), color-stop(100%, rgba(188,224,238,0.79)));
+  background: -webkit-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(179,220,237,0.96) 20%, rgba(110,217,250,0.9) 50%, rgba(188,224,238,0.83) 80%, rgba(188,224,238,0.79) 100%);
+  background: -o-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(179,220,237,0.96) 20%, rgba(110,217,250,0.9) 50%, rgba(188,224,238,0.83) 80%, rgba(188,224,238,0.79) 100%);
+  background: -ms-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(179,220,237,0.96) 20%, rgba(110,217,250,0.9) 50%, rgba(188,224,238,0.83) 80%, rgba(188,224,238,0.79) 100%);
+  background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(179,220,237,0.96) 20%, rgba(110,217,250,0.9) 50%, rgba(188,224,238,0.83) 80%, rgba(188,224,238,0.79) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee', GradientType=1 );
+  font-family: 'Russo One', sans-serif;
+}
+h1{
+  text-align: center;
+  font-size: 6vw;
+  color: #ffffff;
+  -webkit-text-stroke: 1px black;
+}
+.initiallyHidden {
+  display: none;
+}
+#all {
+  height: 100%;
+}
+#game, #btn{
+  text-align: center;
+}
+.playButton {
+  background: #44b2fc;
+  background-image: -webkit-linear-gradient(top, #44b2fc, #2980b9);
+  background-image: -moz-linear-gradient(top, #44b2fc, #2980b9);
+  background-image: -ms-linear-gradient(top, #44b2fc, #2980b9);
+  background-image: -o-linear-gradient(top, #44b2fc, #2980b9);
+  background-image: linear-gradient(to bottom, #44b2fc, #2980b9);
+  -webkit-border-radius: 9;
+  -moz-border-radius: 9;
+  border-radius: 9px;
+  -webkit-box-shadow: 1px 2px 3px #666666;
+  -moz-box-shadow: 1px 2px 3px #666666;
+  box-shadow: 1px 2px 3px #666666;
+  color: #ffffff;
+  font-size: 5vw;
+  padding: 10px 20px 10px 20px;
+  border: solid #1f628d 2px;
+  text-decoration: none;
+  font-family: 'Russo One', sans-serif;
+}
+
+.playButton:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: black;
+}
+
+#footer{
+  text-align: center;
+  font-size: 3vw;
+  color: #ffffff;
+  -webkit-text-stroke: 1px black;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1em;
+  margin: auto;
+}
