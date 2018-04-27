@@ -8,13 +8,45 @@ jQuery(document).ready(function(){
         });
     });
 
+    document.getElementById('myCanvas').addEventListener('click',function(evt){
+    var clientX = evt.clientX;
+    var clientY = evt.clientY;
 
 
-    var myScore;
-    var circles, userInput;
+    var rect = myGameArea.canvas.getBoundingClientRect(), // abs. size of element
+    scaleX = myGameArea.canvas.width / rect.width,    // relationship bitmap vs. element for X
+    scaleY = myGameArea.canvas.height / rect.height;  // relationship bitmap vs. element for Y
+
+    //  console.log('x: ' + (clientX - rect.left * scaleX) + ' y: ' + (clientY - rect.top * scaleY));
+
+
+    for (var i=0; i<userChoices.length; i++){
+      var dx = (clientX - rect.left * scaleX) - userChoices[i].x;
+      var dy = (clientY - rect.top * scaleY) - userChoices[i].y;
+      var dist = Math.sqrt(dx*dx+ dy*dy)
+
+
+      if (dist <= userChoices[i].r){
+        userInput.push(userChoices[i].colour);
+        if(userInput[i] == colourOrder[i]){
+          console.log("hi");
+        } else {
+          console.log("wrong colour");
+        }
+      }
+    }
+
+    },false);
+
+
+    var myScore = 0;
+    var colourOrder = [];
+    var userChoices = [];
+    var userInput = [];
     var i,x,y,r,colour,interval;
     var gameTimeout;
     var colours = ['red', 'yellow', 'white', 'Magenta', 'blue', 'green'];
+    var startingColours = ['red', 'yellow', 'white', 'Magenta', 'blue', 'green'];
     var canvasWidth = document.documentElement.clientWidth * 0.5;
     var canvasHeight = document.documentElement.clientHeight * 0.4;
 
@@ -45,15 +77,28 @@ jQuery(document).ready(function(){
     function enterInput(){
       clearTimeout(gameTimeout);
       drawBackground();
+      drawSelectionCircles();
       jQuery('#input').toggle('show');
+    }
+
+    function drawSelectionCircles(){
+      var tempX, tempY, tempR = 0;
+        r = canvasWidth * 0.06;
+        x = canvasWidth * 0.1;
+        y = canvasHeight * 0.2;
+        for (var i=0; i < 6; i++){
+          colour = startingColours[i];
+          createCircle(x, y, r, colour);
+          userChoices.push({x,y,r,colour});
+          x += canvasWidth * 0.15;
+        }
+
     }
 
     function drawCircles(){
         r = Math.floor(Math.random() * canvasWidth * 0.06) + canvasWidth * 0.03;
         x = Math.floor(Math.random() * (canvasWidth - r) + 1 ) + r;
         y = Math.floor(Math.random() * (canvasHeight - r) + 1 ) + r;
-        console.log(canvasWidth, canvasHeight)
-        console.log("x: "+x+" y: "+y+" r: "+r);
         colour = colours[Math.floor(Math.random() * colours.length)];
 
         if (colours.length < 2){
@@ -64,6 +109,7 @@ jQuery(document).ready(function(){
         if (index != -1) {
           colours.splice(index, 1);
         }
+        colourOrder.push([colour]);
         createCircle(x, y, r, colour);
     }
 
@@ -81,4 +127,4 @@ jQuery(document).ready(function(){
         ctx.fill();
         ctx.strokeStyle = colour;
         ctx.stroke();
-    }
+      }
